@@ -1,0 +1,6 @@
+data/
+cache/
+share/
+*.nc
+*.log
+__pycache__/

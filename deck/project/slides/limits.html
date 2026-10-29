@@ -1,0 +1,17 @@
+<section id="limits" data-transition="fade" style="background:#F8F8F5;color:#15222E;font-family:'Noto Sans TC', Arial, sans-serif;padding:112px 128px 150px;display:flex;flex-direction:column;gap:26px">
+<p style="font-size:26px;color:#E0812B;font-weight:700;letter-spacing:2px">限制與模型檢查</p>
+<h2 style="font-family:'Noto Serif TC', Georgia, serif;font-size:60px;font-weight:700;line-height:1.15">這兩個模型不會說的話，以及我們怎麼檢查它們：讓模型自己生資料跟真的比，再從已知的真值反推看估不估得回來</h2>
+<div style="display:flex;gap:22px;flex:1">
+<div style="flex:1;display:flex;flex-direction:column;gap:16px">
+<div style="background:#FFFFFF;border:1px solid #D8DCE0;border-radius:14px;padding:20px 26px;display:flex;flex-direction:column;gap:6px"><p style="font-size:23px;color:#2E6F9E;font-weight:700">選秀日 · 倍數不是報價</p><p style="font-size:23px;line-height:1.5;color:#4A5568">金額是上限，重新校準版本為下限；高中 0.40 係數只來自 5 個班級；簽約金用 2005–18 平均，近年班級的倍數會更低。高中生為什麼下滑，年代差異不等於因果，COVID 只解釋 14–23%。</p></div>
+<div style="background:#FFFFFF;border:1px solid #D8DCE0;border-radius:14px;padding:20px 26px;display:flex;flex-direction:column;gap:6px"><p style="font-size:23px;color:#E0812B;font-weight:700">農場 · 守備量不到；成績單預測的一半是機會</p><p style="font-size:23px;line-height:1.5;color:#4A5568">守備與臂力在成績單上沒有數字，那兩把尺不估，只能算出「成功裡有多少是量不到的」。六季 WAR 的 44% 是上場機會，由球隊分配：模型最會預測的是球隊讓誰上去（R² 0.43），最不會的是上去之後打得怎樣（0.14）。「照真相升人多 34 WAR」的真相尺是同一批人估的，乾淨版本要用別季學的尺。</p></div>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:16px">
+<div style="background:#FFFFFF;border:1px solid #D8DCE0;border-radius:14px;padding:20px 26px;display:flex;flex-direction:column;gap:6px"><p style="font-size:23px;color:#E0812B;font-weight:700">後驗預測檢查 · 位置對、寬度窄、WAR 形狀不對</p><p style="font-size:23px;line-height:1.5;color:#4A5568">每季從後驗抽 200 組參數重生十五個數字跟真的比（升級段 17 季、WAR 段 13 季）：打擊率、三振率、拉打率等八個數字真實比模型假設的散 1.4–1.9 倍，位置對、區間偏窄；升級的十分位校準全在模型的 5–95% 內。登上者 WAR ≤ 0 的比例真實 49%、模型 35%：對稱的 t 配不上一半的人在零附近。修法已知（beta-binomial、兩段式 WAR），比賽後做。</p></div>
+<div style="background:#1F3040;color:#F8F8F5;border-radius:14px;padding:20px 26px;display:flex;flex-direction:column;gap:6px"><p style="font-size:23px;color:#E0812B;font-weight:700">參數還原 · 真值已知，估得回來嗎</p><p style="font-size:23px;line-height:1.5;color:#BFD0DC">用模型自己的生成式在真實的打席數上造假農場（負荷量、權重、球團效應全部已知），再用同一支程式配回去。79 個複本：主模型 20 個，22 個參數平均偏差 0.009，89% 區間涵蓋率 0.86（名目 0.89）；四把尺的權重偏差都在 0.04 內；能力分數跟真值相關 0.91–0.96。真相換成比較散的 beta-binomial（1.5 倍）再做 20 個：偏差一樣 0.009，涵蓋率掉到 0.83，區間略窄但方向不偏。WAR 段 20 個：兩段十個權重偏差都在 0.04 內、涵蓋率 0.87，只有 t 分布的自由度估高（5 → 6.2）。五把尺 10 個：第五把尺的權重 0.30 估回 0.29。球團各自的尺：三十隊的散布 σ 估得回來，但個別球隊的偏離只跟真值相關 0.35，所以第 22 頁不講單一球隊的權重。Statcast 那 430 人的子樣本：負荷量還原正常，結構權重偏高 0.1–0.3，所以第 23 頁只講負荷量和樣本外猜中率。球隊 × 型態的交互作用認不出（−0.3 估回 0），那個模型不用。決策程序：真相是加權加總時 4/4 認對，其他真相 16 次沒有一次誤判成加權加總；真相是 exemplar 時我們的 exemplar 模型認不出（0/4，被規則模型贏），所以只主張「像加權加總」，不主張「不像 exemplar」。</p></div>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:56px;font-size:21px;color:#6A7179;width:1480px">ppc.py --all · sim_recover.py、sim_decision.py（每個複本一個 job，2 鏈 × 1,000）· 兩集都只做 MLB 打者；投手是另一套能力 · 上集兩條照原文</p>
+<p data-page="28" style="position:absolute;right:128px;bottom:56px;font-size:22px;color:#6A7179;font-variant-numeric:tabular-nums">28 / 30</p>
+<aside>主動講限制與檢查。四格：選秀日限制、農場限制、後驗預測檢查哪裡不準、參數還原：主模型偏差 0.009、涵蓋率 0.86，WAR 段 0.87，五把尺 0.91。被問「怎麼知道不是過度配適」就指右邊兩格。</aside>
+</section>

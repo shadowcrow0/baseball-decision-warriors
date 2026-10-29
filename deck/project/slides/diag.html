@@ -1,0 +1,27 @@
+<section id="diag" data-transition="fade" style="background:#F8F8F5;color:#15222E;font-family:'Noto Sans TC', Arial, sans-serif;padding:112px 128px 150px;display:flex;flex-direction:column;gap:28px">
+<p style="font-size:26px;color:#E0812B;font-weight:700;letter-spacing:2px">附錄</p>
+<h2 style="font-family:'Noto Serif TC', Georgia, serif;font-size:62px;font-weight:700;line-height:1.15">模型檢查：上集的測試集成績，下集的跨年同號與模型比較</h2>
+<div style="display:flex;gap:28px;flex:1">
+<div style="flex:1;display:flex;flex-direction:column;gap:12px">
+<h3 style="font-size:28px;font-weight:700">上集 · 拿掉順位，模型失去辨識力（測試 2014–18）</h3>
+<table style="font-size:24px;line-height:1.45;border:1px solid #D8DCE0;width:100%;font-variant-numeric:tabular-nums"><tr style="background:#15222E;color:#F8F8F5"><th style="width:34%;text-align:left;padding:9px 12px">指標</th><th style="width:22%;text-align:right;padding:9px 12px">含順位（貝氏）</th><th style="width:22%;text-align:right;padding:9px 12px">不含順位（貝氏）</th><th style="width:22%;text-align:right;padding:9px 12px">不含順位（GBM）</th></tr>
+<tr><td style="padding:8px 12px">P(登上一軍) AUC</td><td style="text-align:right;padding:8px 12px;font-weight:700">0.750</td><td style="text-align:right;padding:8px 12px">0.591</td><td style="text-align:right;padding:8px 12px">0.601</td></tr>
+<tr style="background:#EEF0F2"><td style="padding:8px 12px">WAR Spearman</td><td style="text-align:right;padding:8px 12px;font-weight:700">0.106</td><td style="text-align:right;padding:8px 12px">0.042</td><td style="text-align:right;padding:8px 12px">0.050</td></tr>
+<tr><td style="padding:8px 12px">WAR RMSE（常數基準 2.125）</td><td style="text-align:right;padding:8px 12px;font-weight:700">2.012</td><td style="text-align:right;padding:8px 12px">2.115</td><td style="text-align:right;padding:8px 12px">2.226</td></tr>
+<tr style="background:#EEF0F2"><td style="padding:8px 12px">80% 區間涵蓋率</td><td style="text-align:right;padding:8px 12px">86.3%</td><td style="text-align:right;padding:8px 12px">83.4%</td><td style="text-align:right;padding:8px 12px">—</td></tr></table>
+<p style="font-size:23px;color:#6A7179;line-height:1.5">GBM 不含順位的 SHAP：年齡 0.082 ≫ 內野 0.023 > JC 0.010，其餘接近 0。收斂：r-hat ≤ 1.005、ESS ≥ 955。</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:12px">
+<h3 style="font-size:28px;font-weight:700">下集 · 全年份：跨年同號、模型比較、校準</h3>
+<table style="font-size:24px;line-height:1.45;border:1px solid #D8DCE0;width:100%;font-variant-numeric:tabular-nums"><tr style="background:#15222E;color:#F8F8F5"><th style="width:34%;text-align:left;padding:9px 12px">檢查</th><th style="width:33%;text-align:left;padding:9px 12px">升級段（17 季）</th><th style="width:33%;text-align:left;padding:9px 12px">WAR 段（13 季）</th></tr>
+<tr><td style="padding:8px 12px">打得到球 / 打得遠 / 球探評價 同號季數</td><td style="padding:8px 12px">17 / 17 / 17</td><td style="padding:8px 12px">13 / 13 / 13</td></tr>
+<tr style="background:#EEF0F2"><td style="padding:8px 12px">選得到球</td><td style="padding:8px 12px">17 季全負</td><td style="padding:8px 12px">登上 13 季全慢；WAR 4 正 9 負（零）</td></tr>
+<tr><td style="padding:8px 12px">LOO：最好的模型</td><td style="padding:8px 12px">wOBA 多項式 16 / 17（能力差 0–90）</td><td style="padding:8px 12px">wOBA 多項式 10、能力 3（差 0–50）</td></tr>
+<tr style="background:#EEF0F2"><td style="padding:8px 12px">LOO：成績單直接進 相對最好</td><td style="padding:8px 12px">差 60–130</td><td style="padding:8px 12px">差 50–110</td></tr>
+<tr><td style="padding:8px 12px">十分位校準（模型說幾成 vs 實際幾成）</td><td style="padding:8px 12px">差在 ±0.07 內</td><td style="padding:8px 12px">登上：差在 ±0.03 內</td></tr>
+<tr style="background:#EEF0F2"><td style="padding:8px 12px">能力分數跨季相關（同一人兩季）</td><td style="padding:8px 12px">跑得快 0.76、打得遠 0.67</td><td style="padding:8px 12px">打得到球 0.64、選得到球 0.49（23,033 人季配對）</td></tr></table>
+<p style="font-size:23px;color:#4A5568;line-height:1.5">能力與 wOBA 多項式對 WAR 的預測力相當，兩者都遠勝成績單直接進；能力的價值是可解釋。divergence 0，r-hat ≤ 1.04（升級段層級截距最高 1.15）。校準是同年估同年查，比上集的跨年測試弱一截。</p>
+</div>
+</div>
+<aside>上集的表照他的原文。下集的 LOO 表是升級 17 季 + WAR 13 季，差值相對各列最好的那個。</aside>
+</section>

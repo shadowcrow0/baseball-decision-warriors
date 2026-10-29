@@ -1,0 +1,20 @@
+{
+ "season": 2015,
+ "truth": "exemplar",
+ "true_family": "Exemplar",
+ "rep": 3,
+ "n": 3097,
+ "rate": 0.4446238295124314,
+ "winner": "兩個規則",
+ "correct": false,
+ "correct_coarse": false,
+ "best_by_family": {
+  "兩個規則": -1942.4457492245588,
+  "單一線性": -1945.2776605810643,
+  "單一規則": -1946.5200182620024,
+  "加權加總": -1946.7193281763748,
+  "Exemplar": -1948.201277891481
+ },
+ "margin_true_vs_best_other": -5.755528666922146,
+ "winner_note": "c1 +0.25；過了再看 c2 +0.40，沒過再看 c2 -0.74"
+}

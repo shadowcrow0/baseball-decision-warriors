@@ -1,0 +1,27 @@
+<section id="statcast" data-transition="fade" style="background:#F8F8F5;color:#15222E;font-family:'Noto Sans TC', Arial, sans-serif;padding:112px 128px 150px;display:flex;flex-direction:column;gap:36px">
+<p style="font-size:26px;color:#E0812B;font-weight:700;letter-spacing:2px">農場 · 進階數據</p>
+<h2 style="font-family:'Noto Serif TC', Georgia, serif;font-size:64px;font-weight:700;line-height:1.15">Statcast 沒有帶來新的一把尺。它量的，是球探本來就在看的那幾件事</h2>
+<div style="display:flex;gap:28px;flex:1">
+<div style="flex:1.3;display:flex;flex-direction:column;gap:14px">
+<p style="font-size:26px;color:#4A5568;line-height:1.5">把七個逐球量放進同一個模型，每一個都落到成績單早就量出來的那把尺上，而且原本的尺一個數字都沒變。</p>
+<div style="display:flex;gap:16px">
+<div style="flex:1;background:#FFFFFF;border:1px solid #D8DCE0;border-radius:14px;padding:22px 24px;display:flex;flex-direction:column;gap:6px"><p style="font-size:24px;color:#6A7179">區內接觸率</p><p style="font-size:30px;font-weight:700;color:#2E6F9E">→ 打得到球</p></div>
+<div style="flex:1;background:#FFFFFF;border:1px solid #D8DCE0;border-radius:14px;padding:22px 24px;display:flex;flex-direction:column;gap:6px"><p style="font-size:24px;color:#6A7179">初速、barrel、拉打飛球</p><p style="font-size:30px;font-weight:700;color:#2E6F9E">→ 打得遠</p></div>
+</div>
+<div style="display:flex;gap:16px">
+<div style="flex:1;background:#FFFFFF;border:1px solid #D8DCE0;border-radius:14px;padding:22px 24px;display:flex;flex-direction:column;gap:6px"><p style="font-size:24px;color:#6A7179">追打壞球率</p><p style="font-size:30px;font-weight:700;color:#2E6F9E">→ 選得到球</p></div>
+<div style="flex:1;background:#FFFFFF;border:1px solid #D8DCE0;border-radius:14px;padding:22px 24px;display:flex;flex-direction:column;gap:6px"><p style="font-size:24px;color:#6A7179">接觸後預期 wOBA</p><p style="font-size:30px;font-weight:700;color:#2E6F9E">→ 擊球品質</p></div>
+</div>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:14px">
+<p style="font-size:26px;color:#4A5568;line-height:1.5">那它值多少？同一批 430 個 3A 球員，猜「明年升不升」：</p>
+<div style="display:flex;align-items:center;gap:14px;font-size:25px"><p style="width:200px;color:#4A5568">成績單五把尺</p><div style="flex:1;height:34px;background:#EEF0F2;border-radius:6px;display:flex"><div style="flex:82;height:34px;background:#2E6F9E;border-radius:6px"></div><div style="flex:18"></div></div><p style="width:90px;text-align:right;font-weight:700">0.82</p></div>
+<div style="display:flex;align-items:center;gap:14px;font-size:25px"><p style="width:200px;color:#4A5568">再加 Statcast</p><div style="flex:1;height:34px;background:#EEF0F2;border-radius:6px;display:flex"><div style="flex:84;height:34px;background:#E0812B;border-radius:6px"></div><div style="flex:16"></div></div><p style="width:90px;text-align:right;font-weight:700;color:#E0812B">0.84</p></div>
+<p style="font-size:24px;color:#6A7179;line-height:1.5">猜中率（AUC），1 是全對。多 0.02，有，但不多。對「上去之後六季的 WAR」，一點都沒有多。</p>
+<div style="background:#1F3040;color:#F8F8F5;padding:22px 28px;border-radius:14px;font-size:25px;line-height:1.5"><span style="color:#E0812B"><b>為什麼重要。</b></span>同一批人三種量法互比：只用 Statcast 量出來的打得到球、選得到球跟成績單量的相關 0.78–0.87，跑得快 1.00；解釋升級的能力一樣（LOO 差 0.5 以內）。兩者都用只略好（+2.5、+5.4 elpd），差別集中在第五把尺擊球品質（相關 0.3–0.6）。沒有 Statcast 的聯盟，用成績單一樣量得出這幾把尺；先問新數據量的是哪把尺，再決定花不花錢。</div>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:56px;width:1480px;font-size:21px;color:#6A7179">Savant 3A 逐球 2023–2024 · 七個量當測量模型的指標（負荷量 0.35–0.63，成績單負荷量與結構係數不變）· 5 折 × 20 次樣本外；同一批人的貝氏 LOO 多 3–4 elpd · fit_year.py --statcast、statcast_vs_rulers.py、compare_fits.py</p>
+<p data-page="23" style="position:absolute;right:128px;bottom:56px;font-size:22px;color:#6A7179;font-variant-numeric:tabular-nums">23 / 30</p>
+<aside>一句話：Statcast 量的是同一把尺，另一種量法。值多少：猜升不升多 0.02，猜 WAR 零。對台灣：沒有球場雷達也能量出尺。被追問細節：負荷量和對決表在報告裡。</aside>
+</section>

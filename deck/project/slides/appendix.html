@@ -1,0 +1,21 @@
+<section id="appendix" data-transition="fade" style="background:#15222E;color:#F8F8F5;font-family:'Noto Sans TC', Arial, sans-serif;padding:112px 128px 150px;display:flex;flex-direction:column;gap:24px">
+<p style="font-size:26px;color:#E0812B;font-weight:700;letter-spacing:2px">APPENDIX · 模型規格與檢查</p>
+<h2 style="font-family:'Noto Serif TC', Georgia, serif;font-size:56px;font-weight:700;line-height:1.15">兩個模型同一個「兩關」骨架：登上一關、登上後一關；輸入不同、檢查各自做</h2>
+<div style="display:flex;gap:22px;flex:1">
+<div style="flex:1;background:#1F3142;border-radius:16px;padding:24px 28px;display:flex;flex-direction:column;gap:8px">
+<h3 style="font-size:27px;font-weight:700;color:#E0812B">PART I · 選秀日模型</h3>
+<p style="font-size:22px;line-height:1.45;color:#BFD8D5"><span style="color:#F8F8F5"><b>單位</b></span>：已簽約選秀球員（2005–18 前 20 輪，7,487 人，含投手）。<span style="color:#F8F8F5"><b>輸入</b></span>：log(順位)、高中／大專、年齡、守位。</p>
+<p style="font-size:22px;line-height:1.45;color:#BFD8D5"><span style="color:#F8F8F5"><b>第一關</b></span> P(八季內登上一軍)：階層貝氏 logit；另有 Kaplan-Meier、Cox 估首登時間與生涯長度。<span style="color:#F8F8F5"><b>第二關</b></span>：登上者 8 季 fWAR 的後驗分布。期望 WAR = P × E[WAR | 登上]，× $8M、6 年控制期、折現 8%、減簽約金 = 淨價值；17 個情境的敏感度。</p>
+<p style="font-size:22px;line-height:1.45;color:#BFD8D5"><span style="color:#F8F8F5"><b>檢查</b></span>：訓練 2005–13 年班、測試 2014–18：含順位 AUC 0.750、拿掉順位 0.591（GBM 0.601）；WAR Spearman 0.106 vs 0.042；80% 區間涵蓋 86%。r-hat ≤ 1.005、ESS ≥ 955。</p>
+</div>
+<div style="flex:1;background:#1F3142;border-radius:16px;padding:24px 28px;display:flex;flex-direction:column;gap:8px">
+<h3 style="font-size:27px;font-weight:700;color:#E0812B">PART II · 農場模型</h3>
+<p style="font-size:22px;line-height:1.45;color:#BFD8D5"><span style="color:#F8F8F5"><b>單位</b></span>：小聯盟打者的一個球季（2007–24，75,538 人季）。<span style="color:#F8F8F5"><b>測量層</b></span>：十五個數字依球探的工具事先歸屬四把尺（二項／負二項，分子÷分母），資料只估每個數字跟尺綁多緊；尺之間允許相關；層級、球團、年齡的截距；順位與簽約金 → 球探評價。</p>
+<p style="font-size:22px;line-height:1.45;color:#BFD8D5"><span style="color:#F8F8F5"><b>結構層三段</b></span>：隔年升不升（logit）；幾年登上（log-normal，六季內沒登上為右設限）；登上後六季 WAR（asinh 尺度 t 分布）。每段有球團截距；一次估完，不確定性往下傳。PyMC NUTS 4 鏈 × 1,000，divergence 0，r-hat ≤ 1.04。</p>
+<p style="font-size:22px;line-height:1.45;color:#BFD8D5"><span style="color:#F8F8F5"><b>檢查</b></span>：每季各自估，打得到球／打得遠／球探評價 17/17 季同號、選球 17 季全負；留一法比三個模型（成績單直接進、四把尺、wOBA 多項式），四把尺與 wOBA 相當、都遠勝直接進；十分位校準 ±0.07 內；四個參考季的權重搬到其他 13 季保留 94% 預測力（forward_check）；後驗預測檢查 17 季（二項過度離散 1.4–1.9 倍、WAR 的 t 不合）；參數還原 115 個複本（主模型 20＋20、WAR 段 20、五把尺 10、Statcast 三種 20、球團斜率 10、型態 5）：主線模型偏差 0.01–0.05、涵蓋率 0.83–0.91；Statcast 子樣本的結構權重偏高、球隊 × 型態的交互作用認不出，兩者都不用來下結論。<span style="color:#F8F8F5"><b>決策程序</b></span>五種取自多線索判斷文獻：WADD（加權加總）、lexicographic（只看一個數字）、conjunctive 門檻、fast-and-frugal tree（兩道門檻）、exemplar；PSIS-LOO 選。</p>
+</div>
+</div>
+<p style="font-size:21px;line-height:1.5;color:#BFD8D5">證據的呈現：係數的區間為 89% 後驗區間；「有沒有效果」用 Bayes factor（Savage–Dickey），不用 p 值；模型之間用 PSIS-LOO。窗口不同是因為起點不同：選秀日起 8 季、農場的每一季起 6 季，兩邊的 WAR 都是 FanGraphs fWAR。細節：docs/model_spec.md、docs/findings.md。</p>
+<p data-page="29" style="position:absolute;right:128px;bottom:56px;font-size:22px;color:#8A96A3;font-variant-numeric:tabular-nums">29 / 30</p>
+<aside>評審問模型時翻這頁。同一個骨架：登上一關、登上後一關。被問「怎麼知道不是過度配適」：每季各自估看同號、早年預測晚年、後驗預測檢查、參數還原。</aside>
+</section>

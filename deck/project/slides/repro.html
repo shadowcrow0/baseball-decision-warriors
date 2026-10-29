@@ -1,0 +1,15 @@
+<section id="repro" data-transition="fade" style="background:#15222E;color:#F8F8F5;font-family:'Noto Sans TC', Arial, sans-serif;padding:112px 128px 150px;display:flex;flex-direction:column;gap:28px">
+<p style="font-size:26px;color:#E0812B;font-weight:700;letter-spacing:2px">附錄 · 資料與重現</p>
+<h2 style="font-family:'Noto Serif TC', Georgia, serif;font-size:60px;font-weight:700;line-height:1.15">資料怎麼來、怎麼檢查、怎麼重跑：全部是程式，純 Python，公開</h2>
+<div style="display:flex;gap:22px;flex:1">
+<div style="flex:1;background:#1F3142;border-radius:16px;padding:26px 28px;display:flex;flex-direction:column;gap:10px"><p style="font-size:23px;color:#E0812B;font-weight:700">1 · 用程式抓</p><p style="font-size:24px;line-height:1.5;color:#BFD8D5">FanGraphs 排行榜 API（小聯盟逐季 23 萬張成績單、大聯盟 fWAR）；Baseball-Reference 選秀頁（2.3 萬個順位與簽約金）；Chadwick 球員對照表；Baseball Savant 排行榜 CSV（跑速、OAA、擊球）與 3A 逐球。</p><p style="font-size:22px;line-height:1.5;color:#8A96A3;font-family:'Courier New', monospace">fetch_minors.py · fetch_war.py · fetch_draft.py · fetch_savant_minors.py</p></div>
+<div style="flex:1;background:#1F3142;border-radius:16px;padding:26px 28px;display:flex;flex-direction:column;gap:10px"><p style="font-size:23px;color:#E0812B;font-weight:700">2 · 清洗與檢查</p><p style="font-size:24px;line-height:1.5;color:#BFD8D5">對照表接人、層級歸一、每季主要層級、六季窗口。每個來源對照「應該有多少」：每年幾輪、哪些層級、多少人、分子不大於分母，共 121 項檢查全過。缺的明講：2006 年無擊球類型、2020 年停賽、守備只有守位。</p><p style="font-size:22px;line-height:1.5;color:#8A96A3;font-family:'Courier New', monospace">clean_minors.py → build_model_table.py · docs/data_inventory.md</p></div>
+<div style="flex:1;background:#1F3142;border-radius:16px;padding:26px 28px;display:flex;flex-direction:column;gap:10px"><p style="font-size:23px;color:#E0812B;font-weight:700">3 · 建模型、驗證、預測</p><p style="font-size:24px;line-height:1.5;color:#BFD8D5">上集：登上機率 × 登上後 WAR，訓練 2005–13 年班、測試 2014–18。下集：每季一個貝氏模型（PyMC，4 鏈 × 1,000），十七季各自估看方向一不一致；用早年的權重預測晚年；後驗預測檢查；參數還原。每個分析都有自我測試。</p><p style="font-size:22px;line-height:1.5;color:#8A96A3;font-family:'Courier New', monospace">fit_year.py · all_years.py · forward_check.py · ppc.py · sim_recover.py</p></div>
+</div>
+<div style="display:flex;gap:22px">
+<div style="flex:1;background:#FFFFFF;color:#15222E;border-radius:14px;padding:18px 26px;font-size:24px;line-height:1.5"><b style="color:#E0812B">上集重跑。</b>run_v3_prefit.py → survival / nopick / sens / oos / haircut；報告 EXPERIMENT_REPORT.md、outputs_v3/REPORT_V3.md。</div>
+<div style="flex:1;background:#FFFFFF;color:#15222E;border-radius:14px;padding:18px 26px;font-size:24px;line-height:1.5"><b style="color:#E0812B">下集重跑。</b>抓資料與事後分析在一般電腦；取樣每季每段 2–12 小時，用計算叢集（UTSA Arc）。規格 docs/model_spec.md，發現 docs/findings.md。</div>
+</div>
+<p style="position:absolute;left:128px;bottom:56px;font-size:21px;color:#8A96A3">程式與文件在 GitHub（shadowcrow0/baseball）· 無 MLB StatsAPI、無付費資料 · 所有圖表數字可從 outputs/ 的檔案對回</p>
+<aside>評審要資料或程式時翻這頁。三步：抓、洗與檢查、建模驗證。被問「數據正確嗎」：121 項檢查、每個數字可對回檔案。</aside>
+</section>

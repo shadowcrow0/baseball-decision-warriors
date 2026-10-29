@@ -1,0 +1,74 @@
+{
+  "v": 4,
+  "createdOnFiles": {
+    "v": 1,
+    "at": "2026-10-13T02:00:00Z"
+  },
+  "lists": "css",
+  "title": "從選秀日到登上一軍：兩個 GM 時刻的 WAR 模型",
+  "order": [
+    "cover",
+    "outline",
+    "story",
+    "goals",
+    "data",
+    "method",
+    "draft_sample",
+    "draft_pick",
+    "draft_reach",
+    "draft_war",
+    "draft_nsv",
+    "draft_risk",
+    "statline",
+    "blocks",
+    "trend",
+    "truth",
+    "ticket",
+    "case",
+    "counterfactual",
+    "discipline",
+    "defense",
+    "clubneed",
+    "statcast",
+    "procedures",
+    "conclusion",
+    "rules",
+    "taiwan",
+    "limits",
+    "appendix",
+    "refs"
+  ],
+  "sections": {
+    "s1": {
+      "description": "研究動機、目標、資料與方法",
+      "start": "cover"
+    },
+    "s2": {
+      "description": "PART I 選秀日：第 N 順位值多少",
+      "start": "draft_sample"
+    },
+    "s3": {
+      "description": "PART II 農場：球隊看什麼、真相要什麼",
+      "start": "statline"
+    },
+    "s4": {
+      "description": "結論與建議",
+      "start": "conclusion"
+    },
+    "s5": {
+      "description": "附錄",
+      "start": "appendix"
+    }
+  },
+  "faces": {
+    "noto-serif-tc": {
+      "family": "Noto Serif TC",
+      "href": "https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700&display=swap"
+    },
+    "noto-sans-tc": {
+      "family": "Noto Sans TC",
+      "href": "https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap"
+    }
+  },
+  "designSystems": []
+}

@@ -1,0 +1,11 @@
+pybaseball
+pandas
+pyarrow
+requests
+tabulate
+lxml
+html5lib
+pymc
+arviz
+h5netcdf
+h5py

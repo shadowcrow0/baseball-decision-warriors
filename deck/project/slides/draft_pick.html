@@ -1,0 +1,19 @@
+<section id="draft_pick" data-transition="fade" style="background:#F8F8F5;color:#15222E;font-family:'Noto Sans TC', Arial, sans-serif;padding:112px 128px 150px;display:flex;flex-direction:column;gap:32px">
+<p style="font-size:26px;color:#E0812B;font-weight:700;letter-spacing:2px">上集 · 選秀日</p>
+<h2 style="font-family:'Noto Serif TC', Georgia, serif;font-size:62px;font-weight:700;line-height:1.15">選秀當天能用的資訊裡，順位幾乎就是全部</h2>
+<div style="display:flex;gap:28px;flex:1">
+<div style="flex:3;display:flex;flex-direction:column;gap:16px;background:#FFFFFF;padding:34px;border:1px solid #D8DCE0;border-radius:16px">
+<p style="font-size:24px;color:#6A7179;line-height:1.4">P(登上一軍) 的測試集 AUC，0.5 = 隨機。由上到下逐步加入特徵。</p>
+<div style="display:flex;align-items:center;gap:14px;font-size:26px"><p style="width:360px">年齡、層級、守位</p><div style="flex:1;height:20px;background:#EEF0F2;border-radius:4px;overflow:hidden;display:flex"><div style="flex:23;height:20px;background:#A0A6AD"></div><div style="flex:77"></div></div><p style="width:90px;text-align:right;font-weight:700">0.580</p></div>
+<div style="display:flex;align-items:center;gap:14px;font-size:26px"><p style="width:360px">＋ 大學球隊強度</p><div style="flex:1;height:20px;background:#EEF0F2;border-radius:4px;overflow:hidden;display:flex"><div style="flex:29;height:20px;background:#A0A6AD"></div><div style="flex:71"></div></div><p style="width:90px;text-align:right;font-weight:700">0.602</p></div>
+<div style="display:flex;align-items:center;gap:14px;font-size:26px"><p style="width:360px;font-weight:700">順位（單獨）</p><div style="flex:1;height:20px;background:#EEF0F2;border-radius:4px;overflow:hidden;display:flex"><div style="flex:71;height:20px;background:#2E6F9E"></div><div style="flex:29"></div></div><p style="width:90px;text-align:right;font-weight:700">0.750</p></div>
+<div style="display:flex;align-items:center;gap:14px;font-size:26px"><p style="width:360px">＋ 小聯盟第一年（當天用不到）</p><div style="flex:1;height:20px;background:#EEF0F2;border-radius:4px;overflow:hidden;display:flex"><div style="flex:88;height:20px;background:#E0812B"></div><div style="flex:12"></div></div><p style="width:90px;text-align:right;font-weight:700">0.809</p></div>
+<div style="display:flex;align-items:center;gap:14px;font-size:26px"><p style="width:360px">＋ 順位</p><div style="flex:1;height:20px;background:#EEF0F2;border-radius:4px;overflow:hidden;display:flex"><div style="flex:96;height:20px;background:#E0812B"></div><div style="flex:4"></div></div><p style="width:90px;text-align:right;font-weight:700">0.835</p></div>
+<p style="font-size:24px;color:#6A7179;line-height:1.4">條長 = (AUC − 0.5) ÷ 0.35。拿掉順位的貝氏模型 AUC 0.591，對各順位帶都預測約 0.5–0.6 WAR，實際從 4.66（1–10 順位）到 0.10（301 以後）。</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:12px;background:#FFFFFF;border:1px solid #D8DCE0;padding:34px;border-radius:16px"><p style="font-size:23px;color:#E0812B;font-weight:700">順位之外</p><p style="font-size:72px;font-weight:700;line-height:1">+0.022</p><p style="font-size:25px;color:#4A5568;line-height:1.5">加入大學球隊強度的 AUC 增量，幾乎無增量。SHAP（GBM）同樣：順位的貢獻遠大於其他特徵。</p></div>
+<div style="flex:1;display:flex;flex-direction:column;gap:12px;background:#1F3040;color:#F8F8F5;padding:34px;border-radius:16px"><p style="font-size:23px;color:#E0812B;font-weight:700">當天用不到的</p><p style="font-size:72px;font-weight:700;line-height:1">+0.229</p><p style="font-size:25px;color:#BFD0DC;line-height:1.5">小聯盟第一年的成績單帶來的增量，比順位還大。這是下集的起點。</p></div>
+</div>
+<p data-page="8" style="position:absolute;right:128px;bottom:56px;font-size:22px;color:#6A7179;font-variant-numeric:tabular-nums">8 / 30</p>
+<aside>順位當天幾乎就是全部；大學球隊強度幾乎沒增量；最強的無順位訊號是小聯盟第一年，但那要簽約一年後才看得到。</aside>
+</section>

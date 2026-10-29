@@ -1,0 +1,20 @@
+<section id="tails" data-transition="fade" style="background:#F8F8F5;color:#15222E;font-family:'Noto Sans TC', Arial, sans-serif;padding:112px 128px 150px;display:flex;flex-direction:column;gap:36px">
+<p style="font-size:26px;color:#E0812B;font-weight:700;letter-spacing:2px">農場 · 不用平均用分布</p>
+<h2 style="font-family:'Noto Serif TC', Georgia, serif;font-size:64px;font-weight:700;line-height:1.15">球隊買的是「最用力時打多快」，WAR 看的是「平常打得多好」</h2>
+<p style="font-size:26px;color:#4A5568;line-height:1.5">430 個 3A 球員，每個人每一顆球的擊球初速排成一條分布。問：分布的哪一段跟「升不升」有關，哪一段跟「上去之後的 WAR」有關？</p>
+<div style="display:flex;gap:28px;flex:1">
+<div style="flex:1.3;display:flex;flex-direction:column;gap:18px">
+<div style="display:flex;gap:16px;font-size:23px;color:#4A5568;padding-left:190px"><span><span style="color:#2E6F9E;font-weight:700">藍</span>＝跟升不升的關係</span><span><span style="color:#E0812B;font-weight:700">橘</span>＝跟 WAR 的關係</span></div>
+<div style="display:flex;align-items:center;gap:14px;font-size:25px"><span style="width:176px;color:#4A5568;line-height:1.3">最弱的三成球<br><span style="font-size:21px;color:#6A7179">沒打好的</span></span><div style="flex:1;display:flex;flex-direction:column;gap:5px"><div style="height:26px;background:#EEF0F2;border-radius:6px"><div style="width:40%;height:26px;background:#2E6F9E;border-radius:6px"></div></div><div style="height:26px;background:#EEF0F2;border-radius:6px"><div style="width:16%;height:26px;background:#E0812B;border-radius:6px"></div></div></div></div>
+<div style="display:flex;align-items:center;gap:14px;font-size:25px"><span style="width:176px;color:#4A5568;line-height:1.3">中間四成<br><span style="font-size:21px;color:#6A7179">平常的揮棒</span></span><div style="flex:1;display:flex;flex-direction:column;gap:5px"><div style="height:26px;background:#EEF0F2;border-radius:6px"><div style="width:72%;height:26px;background:#2E6F9E;border-radius:6px"></div></div><div style="height:26px;background:#EEF0F2;border-radius:6px"><div style="width:17%;height:26px;background:#E0812B;border-radius:6px"></div></div></div></div>
+<div style="display:flex;align-items:center;gap:14px;font-size:25px"><span style="width:176px;color:#4A5568;line-height:1.3">最強的三成球<br><span style="font-size:21px;color:#6A7179">最用力的</span></span><div style="flex:1;display:flex;flex-direction:column;gap:5px"><div style="height:26px;background:#EEF0F2;border-radius:6px"><div style="width:100%;height:26px;background:#2E6F9E;border-radius:6px"></div></div><div style="height:26px;background:#EEF0F2;border-radius:6px"><div style="width:12%;height:26px;background:#E0812B;border-radius:6px"></div></div></div></div>
+<p style="font-size:24px;color:#6A7179;line-height:1.5">條越長，那一段跟結果的關係越強。升不升的證據從下段一路往上段爬；WAR 跟初速的每一段都幾乎無關。WAR 真正跟的是「接觸品質」分布的中段。</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:16px">
+<div style="background:#FFFFFF;border:1px solid #D8DCE0;border-radius:16px;padding:26px 30px;display:flex;flex-direction:column;gap:8px"><p style="font-size:24px;color:#6A7179">升上去的人跟沒升的人，分布長得一樣嗎</p><p style="font-family:'Noto Serif TC', Georgia, serif;font-size:56px;font-weight:700;line-height:1.1;color:#2E6F9E">一樣，只是右移 1.2 mph</p><p style="font-size:24px;line-height:1.5;color:#4A5568">寬度、偏斜、雙峰、打好那團佔幾成，全部沒有差；差的只有位置。WAR 高跟低的人，連位置都一樣。</p></div>
+<div style="background:#1F3040;color:#F8F8F5;padding:22px 28px;border-radius:14px;font-size:25px;line-height:1.5"><b style="color:#E0812B">為什麼重要。</b>「看分布」有用的地方不是形狀，是知道自己看的是哪一段：球隊看上尾在挑上限，真相在中段。拿 Statcast 的平均去預測 WAR 會失望，不是數據不好，是看錯段。</div>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:56px;font-size:21px;color:#6A7179">dist_profile.py、dist_shapes.py · 2023–2024 3A，每人每顆進場球的九個十分位各自進模型（控制四把尺、球探、年齡、打席）· 升級的證據從 BF 4（第 10 分位）到 10⁵（第 80）；WAR 對每段 BF &lt; 7；形狀參數 BF 全 &lt; 1</p>
+<aside>回答「不用平均用分布」。三段條狀圖：藍的往上爬，橘的平平。右邊：形狀一樣只是右移。結論一句：球隊買上尾，真相在中段。</aside>
+</section>

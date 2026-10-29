@@ -1,0 +1,24 @@
+<section id="specs" data-transition="fade" style="background:#15222E;color:#F8F8F5;font-family:'Noto Sans TC', Arial, sans-serif;padding:112px 128px 150px;display:flex;flex-direction:column;gap:28px">
+<p style="font-size:26px;color:#E0812B;font-weight:700;letter-spacing:2px">附錄 · 模型規格</p>
+<h2 style="font-family:'Noto Serif TC', Georgia, serif;font-size:60px;font-weight:700;line-height:1.15">兩個模型並排：同一個「兩關」骨架（登上一關、登上後一關），輸入不同</h2>
+<div style="display:flex;gap:28px;flex:1">
+<div style="flex:1;background:#1F3142;border-radius:16px;padding:28px 30px;display:flex;flex-direction:column;gap:10px">
+<h3 style="font-size:29px;font-weight:700;color:#E0812B">上集 · 選秀日模型</h3>
+<p style="font-size:23px;line-height:1.45;color:#BFD8D5"><b style="color:#F8F8F5">單位</b>：一位已簽約的選秀球員（2005–18 前 20 輪，7,487 人，含投手）。</p>
+<p style="font-size:23px;line-height:1.45;color:#BFD8D5"><b style="color:#F8F8F5">輸入</b>：log(順位)、高中 / 大專、年齡、守位；全部是進職業前的資訊。</p>
+<p style="font-size:23px;line-height:1.45;color:#BFD8D5"><b style="color:#F8F8F5">第一關</b>：P(八季內登上一軍)，階層貝氏 logit；另有 Kaplan-Meier、Cox 估首登時間與生涯長度。</p>
+<p style="font-size:23px;line-height:1.45;color:#BFD8D5"><b style="color:#F8F8F5">第二關</b>：登上者選秀年起 8 季 fWAR 的後驗分布。期望 WAR = P × E[WAR | 登上]。</p>
+<p style="font-size:23px;line-height:1.45;color:#BFD8D5"><b style="color:#F8F8F5">之後</b>：期望 WAR × $8M、6 年控制期、折現 8%、減簽約金與薪資培訓 = NSV；17 個情境的敏感度。</p>
+<p style="font-size:23px;line-height:1.45;color:#BFD8D5"><b style="color:#F8F8F5">評估</b>：訓練 2005–13 年班，測試 2014–18 年班；滾動起點 ≤ 2008 訓練、2009–12 測試。</p>
+</div>
+<div style="flex:1;background:#1F3142;border-radius:16px;padding:28px 30px;display:flex;flex-direction:column;gap:10px">
+<h3 style="font-size:29px;font-weight:700;color:#E0812B">下集 · 農場模型</h3>
+<p style="font-size:23px;line-height:1.45;color:#BFD8D5"><b style="color:#F8F8F5">單位</b>：一位小聯盟打者的一個球季（2007–24，含非選秀與國際簽約；75,538 人季）。</p>
+<p style="font-size:23px;line-height:1.45;color:#BFD8D5"><b style="color:#F8F8F5">測量層</b>：四把尺事先定義為球探的工具（打擊、力量、速度）加選球；十五個數字依定義歸屬（分子 / 分母，二項或負二項），資料只估每個數字跟那把尺綁多緊；尺之間允許相關；層級、球團、年齡的截距。臂力、守備沒有數字，不估。順位與簽約金 → 球探評價。</p>
+<p style="font-size:23px;line-height:1.45;color:#BFD8D5"><b style="color:#F8F8F5">結構層三段</b>：隔年升不升（logit）；幾年登上（log-normal，六季內沒登上為右設限）；登上後六季 WAR（asinh 尺度，t 分布 ν ≥ 3）。每段有球團截距。能力的不確定性一次估完往下傳，打席少的人分數自動模糊。</p>
+<p style="font-size:23px;line-height:1.45;color:#BFD8D5"><b style="color:#F8F8F5">比較</b>：成績單直接進、四把尺、wOBA 多項式三個模型，留一法（PSIS-LOO）；每季獨立估看同不同號；後驗預測檢查與參數還原見下兩頁。</p>
+</div>
+</div>
+<p style="font-size:22px;line-height:1.5;color:#BFD8D5">兩邊都是 PyMC 的 NUTS；上集 r-hat ≤ 1.005、ESS ≥ 955；下集 divergence 0、r-hat ≤ 1.04。窗口不同是因為起點不同：上集從選秀日算 8 季，下集從農場的每一季算 6 季；兩邊的 WAR 都是 FanGraphs fWAR。資料來源：MLB 選秀名單、B-Ref 簽約金、FanGraphs 小聯盟逐季與 fWAR、Chadwick 對照、Savant 跑速／OAA／3A 逐球。</p>
+<aside>評審問模型時翻這頁。同一個骨架：登上一關、登上後一關；上集輸入進職業前，下集輸入進職業後。被問「為什麼一個 8 季一個 6 季」：起點不同。</aside>
+</section>

@@ -1,0 +1,18 @@
+<section id="data" data-transition="fade" style="background:#F8F8F5;color:#15222E;font-family:'Noto Sans TC', Arial, sans-serif;padding:112px 128px 150px;display:flex;flex-direction:column;gap:26px">
+<p style="font-size:26px;color:#E0812B;font-weight:700;letter-spacing:2px">資料來源與清洗</p>
+<h2 style="font-family:'Noto Serif TC', Georgia, serif;font-size:60px;font-weight:700;line-height:1.15">四個公開來源，全部用程式抓、程式接、程式檢查：二十年、兩萬個球員、七萬多個球季</h2>
+<table style="font-size:24px;line-height:1.4;border:1px solid #D8DCE0;width:100%;font-variant-numeric:tabular-nums"><tr style="background:#15222E;color:#F8F8F5"><th style="color:#F8F8F5;width:22%;text-align:left;padding:9px 14px">拿到什麼</th><th style="color:#F8F8F5;width:18%;text-align:left;padding:9px 14px">從哪裡</th><th style="color:#F8F8F5;width:60%;text-align:left;padding:9px 14px">用來做什麼</th></tr>
+<tr><td style="padding:9px 14px;font-weight:700">小聯盟每季成績單</td><td style="padding:9px 14px">FanGraphs（排行榜 API）</td><td style="padding:9px 14px">主角。2006–2026 每個打者每季每層級一張，23 萬張；建模用 2007–2024 的 75,538 個球季</td></tr>
+<tr style="background:#EEF0F2"><td style="padding:9px 14px;font-weight:700">選秀名單與簽約金</td><td style="padding:9px 14px">Baseball-Reference</td><td style="padding:9px 14px">順位、簽約金、高中／大學出身。2.3 萬個順位，全部對上球員；PART I 的 7,487 位已簽約球員也從這裡來</td></tr>
+<tr><td style="padding:9px 14px;font-weight:700">大聯盟 WAR</td><td style="padding:9px 14px">FanGraphs</td><td style="padding:9px 14px">事後的答案：登上一軍之後六季（PART I 為八季）的 fWAR</td></tr>
+<tr style="background:#EEF0F2"><td style="padding:9px 14px;font-weight:700">球員身分對照</td><td style="padding:9px 14px">Chadwick Register</td><td style="padding:9px 14px">讓三邊的同一個人連得起來</td></tr>
+<tr><td style="padding:9px 14px;font-weight:700">物理量與逐球</td><td style="padding:9px 14px">Baseball Savant</td><td style="padding:9px 14px">衝刺速度、OAA、擊球初速（驗證四把尺用）；3A 逐球 2023–2024（進階數據那頁用）</td></tr></table>
+<div style="display:flex;gap:22px">
+<div style="flex:1;background:#FFFFFF;border:1px solid #D8DCE0;padding:18px 24px;border-radius:12px;font-size:23px;line-height:1.5"><span style="color:#E0812B"><b>清洗三條規則。</b></span>打席少的人不刪，模型自己打折；真正的極端值留著（19 歲在 AA 打得像大聯盟的人是訊號不是雜訊）；投手的打擊成績拿掉（2022 年前 AA、AAA 投手要打擊，佔三成五的成績單）。</div>
+<div style="flex:1;background:#FFFFFF;border:1px solid #D8DCE0;padding:18px 24px;border-radius:12px;font-size:23px;line-height:1.5"><span style="color:#E0812B"><b>怎麼確認沒拿錯。</b></span>每個來源對照「應該有多少」：每年幾輪選秀、每年該有哪些層級、多少人、分子不大於分母，121 項檢查全過。缺的明講：2006 年無擊球類型、2020 年小聯盟停賽、守備只有守位。</div>
+<div style="flex:1;background:#1F3040;color:#F8F8F5;padding:18px 24px;border-radius:12px;font-size:23px;line-height:1.5"><span style="color:#E0812B"><b>不用的。</b></span>沒有 MLB 官方 API、沒有付費資料、沒有球探報告。每張圖的數字都可以從公開的程式與輸出檔對回去（第 30 頁）。</div>
+</div>
+<p style="position:absolute;left:128px;bottom:56px;width:1480px;font-size:21px;color:#6A7179">fetch_minors.py · fetch_draft.py · fetch_war.py · fetch_savant_minors.py → clean_minors.py → build_model_table.py · docs/data_inventory.md</p>
+<p data-page="5" style="position:absolute;right:128px;bottom:56px;font-size:22px;color:#6A7179;font-variant-numeric:tabular-nums">5 / 30</p>
+<aside>評分有「方法」和「數據正確性」。講三句：四個來源都是程式抓；清洗三條規則；121 項檢查。</aside>
+</section>
